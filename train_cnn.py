@@ -1,10 +1,3 @@
-'''
-Description: Script to train the network and measure its performance on the test set.
-
-Author: Alejandro Escontrela
-Version: V.1.
-Date: June 12th, 2018
-'''
 from CNN.network import *
 from CNN.utils import *
 
@@ -13,15 +6,15 @@ import argparse
 import matplotlib.pyplot as plt
 import pickle
 
-parser = argparse.ArgumentParser(description='Train a convolutional neural network.')
-parser.add_argument('save_path', metavar = 'Save Path', help='name of file to save parameters in.')
+# parser = argparse.ArgumentParser(description='Train a convolutional neural network.')
+# parser.add_argument('save_path', metavar = 'Save Path', help='name of file to save parameters in.')
 
 if __name__ == '__main__':
     
-    args = parser.parse_args()
-    save_path = args.save_path
-    
-    cost = train(save_path = save_path)
+    # args = parser.parse_args()
+    save_path = 'weights_two_layer_cnn_params_feb20.pkl'
+
+    cost = train(save_path=save_path) #, f=3, num_filt1=16, num_filt2=32, batch_size=32, num_epochs=2)
 
     params, cost = pickle.load(open(save_path, 'rb'))
     [f1, f2, w3, w4, b1, b2, b3, b4] = params

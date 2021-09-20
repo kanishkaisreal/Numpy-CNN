@@ -1,10 +1,3 @@
-'''
-Description: methods to set up and train the network's parameters.
-
-Author: Alejandro Escontrela
-Version: V.1.
-Date: June 12th, 2018
-'''
 from CNN.forward import *
 from CNN.backward import *
 from CNN.utils import *
@@ -12,17 +5,13 @@ from CNN.utils import *
 import numpy as np
 import pickle
 from tqdm import tqdm
-#####################################################
-############### Building The Network ################
-#####################################################
+
 
 def conv(image, label, params, conv_s, pool_f, pool_s):
     
     [f1, f2, w3, w4, b1, b2, b3, b4] = params 
     
-    ################################################
-    ############## Forward Operation ###############
-    ################################################
+
     conv1 = convolution(image, f1, b1, conv_s) # convolution operation
     conv1[conv1<=0] = 0 # pass through ReLU non-linearity
     
@@ -41,9 +30,6 @@ def conv(image, label, params, conv_s, pool_f, pool_s):
      
     probs = softmax(out) # predict class probabilities with the softmax activation function
     
-    ################################################
-    #################### Loss ######################
-    ################################################
     
     loss = categoricalCrossEntropy(probs, label) # categorical cross-entropy loss
         
@@ -181,9 +167,6 @@ def adamGD(batch, num_classes, lr, dim, n_c, beta1, beta2, params, cost):
     
     return params, cost
 
-#####################################################
-##################### Training ######################
-#####################################################
 
 def train(num_classes = 10, lr = 0.01, beta1 = 0.95, beta2 = 0.99, img_dim = 28, img_depth = 1, f = 5, num_filt1 = 8, num_filt2 = 8, batch_size = 32, num_epochs = 2, save_path = 'params.pkl'):
 

@@ -1,19 +1,8 @@
-'''
-Description: backpropagation operations for a convolutional neural network
-
-Author: Alejandro Escontrela
-Version: 1.0
-Date: June 12th, 2018
-'''
-
 import numpy as np
 
 from CNN.utils import *
 
-#####################################################
-############### Backward Operations #################
-#####################################################
-        
+       
 def convolutionBackward(dconv_prev, conv_in, filt, s):
     '''
     Backpropagation through a convolutional layer. 
